@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @widget.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @widget.user_id %>
+</p>
+
+<% if user_signed_in? and current_user.id == @widget.user_id%>
+  <%= link_to 'Edit', edit_widget_path(@widget) %> |
+  <%= link_to 'Destroy', @widget, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<%= link_to 'Back', widgets_path %>
