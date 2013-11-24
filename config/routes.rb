@@ -1,5 +1,11 @@
 WidgetStore::Application.routes.draw do
-  resources :widgets
+  resources :widgets do
+    member do
+      get 'subscribe'
+      get 'unsubscribe'
+      get 'publish'
+    end  
+  end
   
   authenticated :user do
     root :to => 'widgets#index'

@@ -18,6 +18,9 @@
     <td><%= widget.created_at %></td>
     <% if user_signed_in? %>
     <td><a href=<%= widget.source.url %>>Download</a></td>
+    <!-- <td><%= link_to 'Subscribe', subscribe_widget_path(widget)%></td>
+    <td><%= link_to 'Unsubscribe', unsubscribe_widget_path(widget)%></td> -->
+    <td><%= link_to 'Publish', publish_widget_path(widget)%></td>
     <% end %>
     <!-- <td><%= link_to 'Show', widget %></td> -->
     <!-- <td><%= link_to 'Edit', edit_widget_path(widget) %></td> -->
