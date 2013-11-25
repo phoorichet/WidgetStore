@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121032919) do
+ActiveRecord::Schema.define(:version => 20131125053923) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20131121032919) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "device_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20131121032919) do
     t.string   "source_content_type"
     t.integer  "source_file_size"
     t.datetime "source_updated_at"
+    t.string   "version"
   end
 
 end

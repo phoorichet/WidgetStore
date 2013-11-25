@@ -8,6 +8,9 @@ class WidgetsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @widgets }
     end 
+
+    
+
   end
 
   # GET /widgets/1
@@ -86,14 +89,14 @@ class WidgetsController < ApplicationController
   def subscribe
     puts '[DEBUG]'
     puts 'subscribe'
-    #Thread.new do
+    Thread.new do
       $redis.subscribe('test') do |on|
         on.message do |channel, msg|
           puts '[DEBUG]'
           puts "#{channel} - #{msg}"
         end
       end
-    #end
+    end
     respond_to do |format|
       format.html { redirect_to widgets_url }
       format.json { head :no_content }
@@ -114,8 +117,14 @@ class WidgetsController < ApplicationController
   def publish
     puts '[DEBUG]'
     puts 'publish'
+
     @widget = Widget.find(params[:id])
-    $redis.publish('test', 'widget url')
+    message = {
+      :widget_name => @widget.name,
+      :widget_version => @widget.version
+    }
+    $redis.publish('test', message.to_json)
+
     respond_to do |format|
       format.html { redirect_to widgets_url }
       format.json { head :no_content }

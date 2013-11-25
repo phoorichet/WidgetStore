@@ -1,5 +1,5 @@
 class Widget < ActiveRecord::Base
-  attr_accessible :name, :user_id, :source
+  attr_accessible :name, :user_id, :source, :version
 
   belongs_to :user
   validates :user_id, presence: true
