@@ -9,6 +9,7 @@ thread = Thread.new do
       puts '[DEBUG]'
       data = JSON.parse(msg)
       puts data['widget_name']
+      puts data['device_id']
       puts data['widget_version']
     end
   end

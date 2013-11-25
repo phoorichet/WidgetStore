@@ -121,6 +121,7 @@ class WidgetsController < ApplicationController
     @widget = Widget.find(params[:id])
     message = {
       :widget_name => @widget.name,
+      :device_id => current_user.device_id,
       :widget_version => @widget.version
     }
     $redis.publish('test', message.to_json)

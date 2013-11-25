@@ -11,8 +11,8 @@ WidgetStore::Application.routes.draw do
     root :to => 'widgets#index'
   end
   root :to => "widgets#index"
+  
   devise_for :users
-  resources :users
   
 
   # The priority is based upon order of creation:
