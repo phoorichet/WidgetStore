@@ -124,7 +124,8 @@ class WidgetsController < ApplicationController
       :device_id => current_user.device_id,
       :widget_version => @widget.version
     }
-    $redis.publish('test', message.to_json)
+    puts current_user.device_id
+    $redis.publish(current_user.device_id, message.to_json)
 
     respond_to do |format|
       format.html { redirect_to widgets_url }
