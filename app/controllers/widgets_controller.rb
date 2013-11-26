@@ -85,46 +85,14 @@ class WidgetsController < ApplicationController
     end
   end
 
-  # GET /widgets/1/subscribe
-  def subscribe
-    puts '[DEBUG]'
-    puts 'subscribe'
-    Thread.new do
-      $redis.subscribe('test') do |on|
-        on.message do |channel, msg|
-          puts '[DEBUG]'
-          puts "#{channel} - #{msg}"
-        end
-      end
-    end
-    respond_to do |format|
-      format.html { redirect_to widgets_url }
-      format.json { head :no_content }
-    end
-  end
-
-  def unsubscribe
-    puts '[DEBUG]'
-    puts 'unsubscribe'
-    $redis.unsubscribe('test')
-    respond_to do |format|
-      format.html { redirect_to widgets_url }
-      format.json { head :no_content }
-    end
-  end
-
-  # GET /widgets/1/publish
-  def publish
-    puts '[DEBUG]'
-    puts 'publish'
-
+  # GET /widgets/1/install
+  def install
     @widget = Widget.find(params[:id])
     message = {
       :widget_name => @widget.name,
       :device_id => current_user.device_id,
       :widget_version => @widget.version
     }
-    puts current_user.device_id
     $redis.publish(current_user.device_id, message.to_json)
 
     respond_to do |format|

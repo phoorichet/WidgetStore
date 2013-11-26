@@ -17,15 +17,9 @@
     <td><%= link_to widget.name, widget %></td>
     <td><%= widget.created_at %></td>
     <% if user_signed_in? %>
-    <!-- <td><a href=<%= widget.source.url %>>Download</a></td> -->
-    <!-- <td><%= link_to 'Subscribe', subscribe_widget_path(widget)%></td> -->
-    <!-- <td><%= link_to 'Unsubscribe', unsubscribe_widget_path(widget)%></td> -->
-    <td><%= link_to 'Install', publish_widget_path(widget), 
-      :remote => true, :class => 'btn btn-info btn-small install', :method => 'get' %></td>
+    <td><%= link_to 'Install', install_widget_path(widget), 
+      :remote => true, :class => 'btn btn-primary btn-small', :method => 'get' %></td>
     <% end %>
-    <!-- <td><%= link_to 'Show', widget %></td> -->
-    <!-- <td><%= link_to 'Edit', edit_widget_path(widget) %></td> -->
-    <!-- <td><%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
   </tr>
 <% end %>
 </tbody>

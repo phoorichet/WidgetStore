@@ -1,9 +1,7 @@
 WidgetStore::Application.routes.draw do
   resources :widgets do
     member do
-      get 'subscribe'
-      get 'unsubscribe'
-      get 'publish'
+      get 'install'
     end  
   end
   
