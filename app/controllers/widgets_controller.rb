@@ -9,8 +9,6 @@ class WidgetsController < ApplicationController
       format.json { render json: @widgets }
     end 
 
-    
-
   end
 
   # GET /widgets/1
@@ -87,6 +85,7 @@ class WidgetsController < ApplicationController
 
   # GET /widgets/1/install
   def install
+    puts 'install'
     @widget = Widget.find(params[:id])
     message = {
       :widget_name => @widget.name,
@@ -94,6 +93,11 @@ class WidgetsController < ApplicationController
       :widget_version => @widget.version
     }
     $redis.publish(current_user.device_id, message.to_json)
+
+    relationship = Relationship.new
+    relationship.user_id = current_user.id
+    relationship.widget_id = @widget.id
+    relationship.save
 
     respond_to do |format|
       format.html { redirect_to widgets_url }

@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :widgets
+  has_many :relationships, foreign_key: "user_id", dependent: :destroy
+  has_many :widgets, through: :relationships
 end

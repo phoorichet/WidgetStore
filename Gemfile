@@ -51,9 +51,6 @@ gem 'devise'
 
 gem 'bootstrap-sass', '2.3.2.0'
 
-gem 'paperclip', '~> 3.0'
-gem 'aws-sdk'
-
 gem 'heroku'
 
 gem 'redis', '2.1.1'

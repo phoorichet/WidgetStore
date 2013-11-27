@@ -19,8 +19,12 @@
     <td><%= widget.version%></td>
     <td><%= widget.created_at %></td>
     <% if user_signed_in? %>
-    <td><%= link_to 'Install', install_widget_path(widget), 
-      :remote => true, :class => 'btn btn-primary btn-small', :method => 'get' %></td>
+      <% if Relationship.where(:user_id => current_user.id, :widget_id => widget.id).length == 0 %>
+        <td><%= link_to 'Install', install_widget_path(widget), 
+          :remote => true, :class => 'btn btn-info btn-small install', :method => 'get' %></td>
+      <% else %>
+        <td><a href='#' class='btn btn-info btn-small' disabled='disabled'>Installed</a></td> 
+      <% end %>
     <% end %>
   </tr>
 <% end %>
