@@ -8,11 +8,6 @@ gem 'rails', '3.2.14'
 group :development, :test do
   gem 'sqlite3'
 end
-group :production do
-  gem 'pg'
-  gem 'thin'
-end
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -50,7 +45,5 @@ gem 'devise'
 # gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 gem 'bootstrap-sass', '2.3.2.0'
-
-gem 'heroku'
 
 gem 'redis', '2.1.1'
