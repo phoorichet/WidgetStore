@@ -19,7 +19,7 @@ rails s
 Redis is used. To install and run Redis, following this instruction [Redis](http://redis.io/download)
 
 ## Note
-Redis server needs to be running in before launch the Widget Store.
+Redis server needs to be running before launching the Widget Store for installing widget to work.
 
 
 ## Useful  Links
