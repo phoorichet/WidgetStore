@@ -1,7 +1,7 @@
 Widget Management System (WMS)
 ========================
 
-# Prerequisites and Dependencies
+### Prerequisites and Dependencies
 
 ## Installation
 For the first time installation, run the following command:
